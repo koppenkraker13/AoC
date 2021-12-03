@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class Day3Part2 {
 
     private static ArrayList<String> bitReader(ArrayList<String> list, int position, boolean more) {
-        ArrayList<String> zeroList = new ArrayList<String>();
-        ArrayList<String> oneList = new ArrayList<String>();
+        ArrayList<String> zeroList = new ArrayList<>();
+        ArrayList<String> oneList = new ArrayList<>();
         for (String line : list) {
             int bit = Integer.parseInt(String.valueOf(line.charAt(position)));
             if (bit == 0) {
@@ -28,7 +28,7 @@ public class Day3Part2 {
         try (BufferedReader br = new BufferedReader(new FileReader("day3/data/day3"))) {
             String line;
             int bitNR = 0;
-            ArrayList<String> list = new ArrayList<String>();
+            ArrayList<String> list = new ArrayList<>();
             while ((line = br.readLine()) != null) {
                 list.add(line);
             }
@@ -44,6 +44,7 @@ public class Day3Part2 {
         }
         return null;
     }
+
     public static void main(String[] args) {
         int oxigen = Integer.parseInt(getNumber(true), 2);
         int co2 = Integer.parseInt(getNumber(false), 2);
