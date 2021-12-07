@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Day2Part2 {
     public static void main(String[] args) {
-        try (BufferedReader br = new BufferedReader(new FileReader("day2/data/day2"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("day2/data/day2.txt"))) {
             String line;
             int forward = 0;
             int depth = 0;

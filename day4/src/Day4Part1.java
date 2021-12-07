@@ -9,7 +9,7 @@ public class Day4Part1 {
         ArrayList<Integer> numbers = new ArrayList<>();
         ArrayList<Card> cards = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("day4/data/day4"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("day4/data/day4.txt"))) {
             String line;
 
             line = br.readLine();

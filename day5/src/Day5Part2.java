@@ -30,9 +30,9 @@ public class Day5Part2 {
     }
 
     public static void main(String[] args) {
-        int[] highestCors = Day5Part1.getBiggestCors("day5/data/day5");
+        int[] highestCors = Day5Part1.getBiggestCors("day5/data/day5.txt");
         int[][] map = new int[highestCors[0] + 2][highestCors[1] + 2];
-        try (BufferedReader br = new BufferedReader(new FileReader("day5/data/day5"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("day5/data/day5.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] coordinates = line.split(" -> |,");

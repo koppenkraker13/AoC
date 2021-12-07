@@ -25,7 +25,7 @@ public class Day3Part2 {
     }
 
     private static String getNumber(boolean more) {
-        try (BufferedReader br = new BufferedReader(new FileReader("day3/data/day3"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("day3/data/day3.txt"))) {
             String line;
             int bitNR = 0;
             ArrayList<String> list = new ArrayList<>();

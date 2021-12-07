@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class Day6 {
 
-    public static ArrayList<Double> birthCycle(ArrayList<Double> fish, int days) {
+    public static ArrayList<Long> birthCycle(ArrayList<Long> fish, int days) {
         for (int i = 0; i < days; i++) {
-            double day0 = fish.get(0);
+            long day0 = fish.get(0);
             fish.remove(0);
             fish.add(day0);
             fish.set(6, fish.get(6) + day0);
@@ -15,12 +15,12 @@ public class Day6 {
         return fish;
     }
 
-    public static double getFish(int dayAmount) {
-        try (BufferedReader br = new BufferedReader(new FileReader("day6/data/day6"))) {
-            ArrayList<Double> fish = new ArrayList<>();
+    public static long getFish(int dayAmount) {
+        try (BufferedReader br = new BufferedReader(new FileReader("day6/data/day6.txt"))) {
+            ArrayList<Long> fish = new ArrayList<>();
             String line;
             for (int i = 0; i < 9; i++) {
-                fish.add((double) 0);
+                fish.add((long) 0);
             }
             while ((line = br.readLine()) != null) {
                 String[] ages = line.split(",");
@@ -29,8 +29,8 @@ public class Day6 {
                     fish.set(age, fish.get(age) + 1);
                 }
             }
-            double total = 0;
-            for (double amount : birthCycle(fish, dayAmount)) {
+            long total = 0;
+            for (long amount : birthCycle(fish, dayAmount)) {
                 total += amount;
             }
             return total;
@@ -41,9 +41,7 @@ public class Day6 {
     }
 
     public static void main(String[] args) {
-        System.out.print("Amount after 80 days: ");
-        System.out.printf("%.1f", getFish(80));
-        System.out.print("\nAmount after 256 days: ");
-        System.out.printf("%.1f", getFish(256));
+        System.out.print("Amount after 80 days: " + getFish(80));
+        System.out.print("\nAmount after 256 days: " + getFish(256));
     }
 }

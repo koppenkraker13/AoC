@@ -76,9 +76,9 @@ public class Day5Part1 {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        int[] highestCors = getBiggestCors("day5/data/day5Part1");
+        int[] highestCors = getBiggestCors("day5/data/day5Part1.txt");
         int[][] map = new int[highestCors[0] + 1][highestCors[1] + 1];
-        try (BufferedReader br = new BufferedReader(new FileReader("day5/data/day5Part1"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("day5/data/day5Part1.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] coordinates = line.split(" -> |,");

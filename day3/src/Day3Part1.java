@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Day3Part1 {
     public static void main(String[] args) {
-        try (BufferedReader br = new BufferedReader(new FileReader("day3/data/day3"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("day3/data/day3.txt"))) {
             String line;
             double counter = 0;
             ArrayList<Integer> zeroCounter = new ArrayList<Integer>();

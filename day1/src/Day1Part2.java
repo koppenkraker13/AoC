@@ -9,7 +9,7 @@ public class Day1Part2 {
     public static final int WINDOW_SIZE = 3;
 
     public static void main(String[] args) {
-        try (BufferedReader br = new BufferedReader(new FileReader("day1/data/day1"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("day1/data/day1.txt"))) {
             String line;
             ArrayList<Integer> window = new ArrayList();
             int prevTotal = 0;
