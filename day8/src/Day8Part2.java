@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Day8Part2 {
     public static String sort(String inputString) {
-        char tempArray[] = inputString.toCharArray();
+        char[] tempArray = inputString.toCharArray();
         Arrays.sort(tempArray);
         return new String(tempArray);
     }
@@ -17,6 +17,7 @@ public class Day8Part2 {
         for (char smallChar : small.toCharArray()) {
             if (big.indexOf(smallChar) == -1) {
                 isContained = false;
+                break;
             }
         }
         return isContained;
