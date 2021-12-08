@@ -32,7 +32,7 @@ public class Day8Part2 {
         return result;
     }
 
-    public static List<String> encryptNumbers(String[] exampleData) {
+    public static List<String> decryptNumbers(String[] exampleData) {
         String[] numbers = new String[10];
         ArrayList<String> length5 = new ArrayList<>();
         ArrayList<String> length6 = new ArrayList<>();
@@ -86,7 +86,7 @@ public class Day8Part2 {
             while ((line = br.readLine()) != null) {
                 String[] exampleData = line.split("\\| ")[0].split(" ");
                 String[] questionData = line.split("\\| ")[1].split(" ");
-                List<String> numbersString = encryptNumbers(exampleData);
+                List<String> numbersString = decryptNumbers(exampleData);
                 StringBuilder number = new StringBuilder();
                 for (String num : questionData) {
                     number.append(numbersString.indexOf(sort(num)));
