@@ -56,12 +56,12 @@ public class Day10Part1 {
                     alreadyChecked.add(i);
                     alreadyChecked.add(nextAvailable);
                     Collections.sort(alreadyChecked);
-                    i = 0;
+                    i = -1;
                     nothingChanged = false;
                 }
             }
             if (nextAvailable < 0 && !nothingChanged) {
-                i = 0;
+                i = -1;
             }
         }
         return alreadyChecked;
