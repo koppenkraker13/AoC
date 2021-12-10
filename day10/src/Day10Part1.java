@@ -12,7 +12,7 @@ public class Day10Part1 {
         try (BufferedReader br = new BufferedReader(new FileReader("day10/data/day10.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                if(checkIfCorrupt(line) == corrupt) {
+                if((getIndexOfFirstWrongCharacter(stringToList(line)) != -1) == corrupt) {
                     result.add(line);
                 }
             }
@@ -30,17 +30,8 @@ public class Day10Part1 {
         return chars;
     }
 
-    public static Boolean checkIfCorrupt(String input) {
-        if (getIndexOfFirstWrongCharacter(stringToList(input)) == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     public static ArrayList<Integer> getCorrectCharacters(List<Character> input) {
         ArrayList<Integer> alreadyChecked = new ArrayList<>();
-        boolean nothingChanged = true;
         int nextAvailable = -1;
         for (int i = 0; i < input.size(); i++) {
             if (i < (input.size() - 1) && !alreadyChecked.contains(i)) {
@@ -52,16 +43,12 @@ public class Day10Part1 {
                     }
                 }
                 char next = input.get(nextAvailable);
-                if (nextAvailable >= 0 && (current == '[' && next == ']') || (current == '(' && next == ')') || (current == '{' && next == '}') || (current == '<' && next == '>')) {
+                if ((current == '[' && next == ']') || (current == '(' && next == ')') || (current == '{' && next == '}') || (current == '<' && next == '>')) {
                     alreadyChecked.add(i);
                     alreadyChecked.add(nextAvailable);
                     Collections.sort(alreadyChecked);
                     i = -1;
-                    nothingChanged = false;
                 }
-            }
-            if (nextAvailable < 0 && !nothingChanged) {
-                i = -1;
             }
         }
         return alreadyChecked;
