@@ -5,19 +5,19 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Day11 {
-    private static Octopuse[][] map;
+    private static Octopus[][] map;
 
-    public static Octopuse[][] readMap(String filePath) {
-        ArrayList<Octopuse[]> map = new ArrayList<>();
+    public static Octopus[][] readMap(String filePath) {
+        ArrayList<Octopus[]> map = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
                 char[] chars = line.toCharArray();
-                ArrayList<Octopuse> xcors = new ArrayList<>();
+                ArrayList<Octopus> xcors = new ArrayList<>();
                 for (char chari : chars) {
-                    xcors.add(new Octopuse(Integer.parseInt(Character.toString(chari))));
+                    xcors.add(new Octopus(Integer.parseInt(Character.toString(chari))));
                 }
-                Octopuse[] xcorArr = new Octopuse[xcors.size()];
+                Octopus[] xcorArr = new Octopus[xcors.size()];
                 for (int i = 0; i < xcors.size(); i++) {
                     xcorArr[i] = xcors.get(i);
                 }
@@ -26,7 +26,7 @@ public class Day11 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Octopuse[][] result = new Octopuse[map.get(0).length][map.size()];
+        Octopus[][] result = new Octopus[map.get(0).length][map.size()];
         for (int i = 0; i < map.size(); i++) {
             result[i] = map.get(i);
         }

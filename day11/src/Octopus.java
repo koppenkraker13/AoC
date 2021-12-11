@@ -1,8 +1,8 @@
-public class Octopuse {
+public class Octopus {
     private boolean hasFlashed = false;
     private int charge;
 
-    public Octopuse(int charge) {
+    public Octopus(int charge) {
         this.charge = charge;
     }
 
