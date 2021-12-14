@@ -3,13 +3,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Day12Part1 {
+public class Day12 {
 
-    public static ArrayList<ArrayList<Node>> getPaths(ArrayList<Node> path) {
+    public static ArrayList<ArrayList<Node>> getPaths(ArrayList<Node> path, boolean part2) {
         Node current = path.get(path.size() - 1);
         ArrayList<ArrayList<Node>> result = new ArrayList<>();
         for (Node next : current.getConnections()) {
-            if (Character.isLowerCase(next.getName().toCharArray()[0]) && path.contains(next)) {
+            if (skipNode(path, next, part2)) {
                 continue;
             }
             ArrayList<Node> nextPath = (ArrayList<Node>) path.clone();
@@ -18,18 +18,37 @@ public class Day12Part1 {
                 result.add(nextPath);
                 continue;
             }
-            result.addAll(getPaths(nextPath));
+            result.addAll(getPaths(nextPath, part2));
         }
         return result;
     }
 
-    public static boolean listContainsNode(ArrayList<Node> list, Node node) {
-        for (Node current : list) {
-            if (current.getName().equals(node.getName())) {
+    public static boolean skipNode(ArrayList<Node> path, Node next, boolean part2) {
+        if (Character.isLowerCase(next.getName().toCharArray()[0]) && path.contains(next)) {
+            if (part2 && !next.getName().equals("start")) {
+                for (Node check : path) {
+                    if (Character.isLowerCase(check.getName().toCharArray()[0])) {
+                        ArrayList<Node> test = (ArrayList<Node>) path.clone();
+                        test.remove(check);
+                        if (test.contains(check)) {
+                            return true;
+                        }
+                    }
+                }
+            } else {
                 return true;
             }
         }
         return false;
+    }
+
+    public static boolean listDoesNotContainsNode(ArrayList<Node> list, Node node) {
+        for (Node current : list) {
+            if (current.getName().equals(node.getName())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -52,10 +71,10 @@ public class Day12Part1 {
                 }
                 node1.addConnection(node2);
                 node2.addConnection(node1);
-                if (!listContainsNode(nodes, node1)) {
+                if (listDoesNotContainsNode(nodes, node1)) {
                     nodes.add(node1);
                 }
-                if (!listContainsNode(nodes, node2)) {
+                if (listDoesNotContainsNode(nodes, node2)) {
                     nodes.add(node2);
                 }
             }
@@ -64,7 +83,9 @@ public class Day12Part1 {
         }
         ArrayList<Node> paths = new ArrayList<>();
         paths.add(startNode);
-        ArrayList<ArrayList<Node>> allPaths = getPaths(paths);
-        System.out.println(allPaths.size());
+        ArrayList<ArrayList<Node>> allPathsPart1 = getPaths(paths, false);
+        System.out.println("Part1: " + allPathsPart1.size());
+        ArrayList<ArrayList<Node>> allPathsPart2 = getPaths(paths, true);
+        System.out.println("Part2: " + allPathsPart2.size());
     }
 }
