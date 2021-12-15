@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,12 +23,14 @@ public class Day13Part1 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (instructions.get(0)[0].equals("x")) {
-            paper.xFold(Integer.parseInt(instructions.get(0)[1]));
-        } else {
-            paper.yFold(Integer.parseInt(instructions.get(0)[1]));
+        for (String[] instruction : instructions) {
+            if (instruction[0].equals("x")) {
+                paper.xFold(Integer.parseInt(instruction[1]));
+            } else {
+                paper.yFold(Integer.parseInt(instruction[1]));
+            }
         }
-        System.out.println(paper.getDots().size());
+        System.out.println(paper);
     }
 
 }

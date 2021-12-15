@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Paper {
     private List<int[]> map = new ArrayList<>();
@@ -52,7 +51,32 @@ public class Paper {
         removeDuplicates();
     }
 
-    public List<int[]> getDots() {
-        return this.map;
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        int biggestX = 0;
+        int biggestY = 0;
+        for (int[] cor : this.map) {
+            biggestX = Math.max(cor[0], biggestX);
+            biggestY = Math.max(cor[1], biggestY);
+        }
+        for (int y = 0; y <= biggestY; y++) {
+            for (int x = 0; x <= biggestX; x++) {
+                boolean check = false;
+                for (int[] cor : this.map) {
+                    if(cor[0] == x && cor[1] == y) {
+                        check = true;
+                        break;
+                    }
+                }
+                if (check) {
+                    result.append("|");
+                } else {
+                    result.append(" ");
+                }
+            }
+            result.append("\n");
+        }
+        return result.toString();
     }
 }
