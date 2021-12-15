@@ -38,6 +38,10 @@ public class Paper {
         removeDuplicates();
     }
 
+    public int getDotAmount() {
+        return this.map.size();
+    }
+
     public void xFold(int xcor) {
         List<int[]> result = new ArrayList<>();
         for (int[] cors : this.map) {

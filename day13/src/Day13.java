@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day13Part1 {
+public class Day13 {
 
     public static void main(String[] args) {
         Paper paper = new Paper();
@@ -29,8 +29,9 @@ public class Day13Part1 {
             } else {
                 paper.yFold(Integer.parseInt(instruction[1]));
             }
+            System.out.println(paper.getDotAmount() + " Dots on the paper");
         }
-        System.out.println(paper);
+        System.out.println("\n end result:\n" + paper);
     }
 
 }
