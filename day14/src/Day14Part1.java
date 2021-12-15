@@ -26,7 +26,7 @@ public class Day14Part1 {
         }
         char[] chars = polymer.toCharArray();
         for (char chari : chars) {
-            amount.put("" + chari, amount.containsKey("" + chari) ? amount.get("" + chari) + 1 : 1) ;
+            amount.put("" + chari, amount.containsKey("" + chari) ? amount.get("" + chari) + 1 : 1);
         }
         for (int i = 0; i < AMOUNT_OF_STEPS; i++) {
             for (int j = 0; j < polymer.length() - 1; j++) {
