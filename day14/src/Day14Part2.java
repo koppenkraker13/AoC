@@ -6,29 +6,19 @@ import java.util.Map;
 
 public class Day14Part2 {
     public static final int AMOUNT_OF_STEPS = 40;
-    private static char beginChar;
-    public static char endChar;
 
-    public static long MostMinLeast(Map<String, Long> polymer) {
-        long leastFrequent = Long.MAX_VALUE;
+    public static long MostMinLeast(Map<String, Long> polymer, String beginLetter) {
+        Map<String, Long> amount = new HashMap<>();
+        amount.put(beginLetter, 1L);
+        for (var entry : polymer.entrySet()) {
+            String letter = entry.getKey().substring(1);
+            amount.put(letter, amount.containsKey(letter) ? amount.get(letter) + entry.getValue() : entry.getValue());
+        }
         long mostFrequent = 0;
-        for (char ch = 'A'; ch <= 'Z'; ch++) {
-            long frequency = 0;
-            for (Map.Entry<String, Long> entry : polymer.entrySet()) {
-                if (entry.getKey().charAt(0) == ch && entry.getKey().charAt(1) == ch) {
-                    frequency += 2L * entry.getValue();
-                } else if (entry.getKey().charAt(0) == ch || entry.getKey().charAt(1) == ch) {
-                    frequency += entry.getValue();
-                }
-            }
-            if (ch == beginChar || ch == endChar) {
-                frequency++;
-            }
-            frequency = frequency/2;
-            if (frequency != 0) {
-                leastFrequent = Math.min(leastFrequent, frequency);
-            }
-            mostFrequent = Math.max(mostFrequent, frequency);
+        long leastFrequent = Long.MAX_VALUE;
+        for(var entry : amount.entrySet()) {
+            mostFrequent = Math.max(mostFrequent, entry.getValue());
+            leastFrequent = Math.min(leastFrequent, entry.getValue());
         }
         return mostFrequent - leastFrequent;
     }
@@ -49,8 +39,7 @@ public class Day14Part2 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        beginChar = startString.charAt(0);
-        endChar = startString.charAt(startString.length()-1);
+        String beginLetter = "" + startString.charAt(0);
         for (int i = 0; i < startString.length() - 1; i++) {
             String sub = startString.substring(i, i+2);
             polymer.put(sub, polymer.containsKey(sub) ? polymer.get(sub) + 1 : 1);
@@ -66,6 +55,6 @@ public class Day14Part2 {
             }
             polymer = temp;
         }
-        System.out.println(MostMinLeast(polymer));
+        System.out.println(MostMinLeast(polymer, beginLetter));
     }
 }
