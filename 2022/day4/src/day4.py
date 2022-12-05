@@ -1,9 +1,7 @@
 solution1, solution2 = 0, 0
 with open("../data/data.txt") as fp:
-    for line in fp:
-        splitted = line.split(",")
-        left = list(map(lambda x: int(x), splitted[0].split("-")))
-        right = list(map(lambda x: int(x), splitted[1].replace("\n", "").split("-")))
+    for line in fp.read().splitlines():
+        left, right = tuple(tuple(map(lambda x: int(x), y.split("-"))) for y in line.split(","))
 
         if (left[0] == right[0] or left[1] == right[1]) or (left[0] < right[0] and left[1] > right[1]) or (left[0] > right[0] and left[1] < right[1]):
             solution1 += 1
